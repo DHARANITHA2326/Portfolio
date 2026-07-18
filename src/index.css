@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom styling rules */
+body {
+  background-color: #fcfcf9;
+  color: #1f2937;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Scrollbar customizations */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #e4e4e7;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+/* Print Styling: Create a perfect printable traditional CV layout from the digital page */
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+    font-size: 12pt !important;
+  }
+  
+  /* Hide interactive layouts and components that shouldn't print */
+  #interactive-dashboard-controls,
+  #contact-card form,
+  #clear-skill-filter-btn,
+  #copy-email-btn svg:last-child,
+  #copy-phone-btn svg:last-child,
+  #print-resume-btn,
+  #interactive-badge,
+  button,
+  footer {
+    display: none !important;
+  }
+
+  /* Unfold expanded panels to print everything clearly */
+  .line-clamp-1 {
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+  }
+
+  /* Remove scrollbars and absolute sizes */
+  .overflow-hidden,
+  .overflow-y-auto {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  /* Reset grid layouts for standard paper presentation */
+  .grid {
+    display: block !important;
+  }
+  
+  /* Layout modifications for print */
+  #main-portfolio-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Page-break preventions to avoid awkward splitting */
+  #profile-card,
+  #education-card,
+  #skills-card,
+  #projects-card,
+  #experience-card,
+  #contact-card {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 1rem 0 !important;
+    margin-bottom: 1.5rem !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    page-break-inside: avoid !important;
+  }
+}
